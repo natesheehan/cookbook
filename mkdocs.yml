@@ -1,4 +1,5 @@
 site_name: Computational methods for historical texts
+repo_url: https://github.com/natesheehan/cookbook
 theme:
   features:
     - content.action.edit
