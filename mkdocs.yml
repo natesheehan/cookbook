@@ -1,0 +1,10 @@
+site_name: Computational methods for historical texts
+theme:
+  features:
+    - content.action.edit
+  name: mkdocs
+  nav_style: dark
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - python
