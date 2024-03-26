@@ -1,6 +1,8 @@
 # Simple Analysis
 
-[![googlecolab](img/c.jpg)](https://colab.research.google.com/)
+
+
+[![googlecolab](img/c.jpg)](https://colab.research.google.com/drive/1l9WG8W9Eewd3C3brci-5Lit74GfPzmp2?usp=sharing)
 
 
 ## Installing Package
