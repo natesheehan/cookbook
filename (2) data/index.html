@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>(2) data - Computational methods for historical texts</title>
+        <title>Data collecton and loading - Computational methods for historical texts</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -39,7 +39,7 @@
                                 <a href="../%281%29%20intro/" class="nav-link">(1) intro</a>
                             </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">(2) data</a>
+                                <a href="./" class="nav-link">Data collecton and loading</a>
                             </li>
                             <li class="navitem">
                                 <a href="../%283%29%20simple%20analysis/" class="nav-link">Simple Analysis</a>
@@ -94,12 +94,75 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#data-collecton-and-loading" class="nav-link">Data collecton and loading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sourcing-data" class="nav-link">Sourcing data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#working-with-external-data" class="nav-link">Working with external data</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#loading-data" class="nav-link">Loading data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#making-a-corpus" class="nav-link">Making a corpus</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#a-note-about-pre-processing" class="nav-link">A note about pre-processing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<h1 id="data-collecton-and-loading">Data collecton and loading</h1>
+<p><a href=""><img alt="googlecolab" src="../img/c.jpg" /></a></p>
+<h1 id="sourcing-data">Sourcing data</h1>
+<p>A wide range of online sources are available for collecting data on a similar number of topics. Online archives and repositories often make raw text files available, or text can be extracted from other available content such as web pages or PDFs.</p>
+<p>We won't cover the details of collecting a dataset here, instead assuming that you have already collected your own set of text files to work on. Python can handle a range of different file formats as input, but some of the steps will need to be customised depending on your chosen format.</p>
+<p>For demonstrative purposes, this cookbook uses a set of AI-generated content on a range of themes (primarily to respect the copyright of works we use in research). You can see more information how these data were generated in the <a href="">data folder</a>.</p>
+<p>If you are interested in interacting with online sources of data, you may find the following examples helpful:
+    - <a href="https://www.geeksforgeeks.org/python-web-scraping-tutorial/">Introduction to web scraping</a>
+    - <a href="https://www.dataquest.io/blog/python-api-tutorial/">Introduction to accessing APIs</a></p>
+<h1 id="working-with-external-data">Working with external data</h1>
+<p>Once you've collected a dataset, you are ready to begin working with the text in Python. There are a wide range of file handling options that can automatically parse different structures. We'll give you some common examples below.</p>
+<h2 id="loading-data">Loading data</h2>
+<p>A <code>.text</code> file is the simplest format for handling text data. Here is a snippet of code to read one in as a single string.</p>
+<pre><code class="language-python">with open('example.txt','r',encoding='utf-8') as f:
+    text = '\n'.join(f)
+</code></pre>
+<p>Note the <code>encoding</code> parameter we used here, which is useful for handling a range of special characters and is typically required for processing web data.</p>
+<p>Alternatively, you may have created a <code>.csv</code> file containing information for a range of different documents. Pandas is a useful library for automatically converting these data into a convenient format.</p>
+<pre><code class="language-python">import pandas as pd
+df = pd.read_csv('example.csv')
+</code></pre>
+<p>We're going to use a slightly different format for working with our example text generated using AI tools called a <code>.json</code> file. This format is a good way to attach relevant metadata to a document text.</p>
+<pre><code class="language-python">import json
+with open('example.json','r',encoding='utf-8') as f:
+    data = json.load(f)
+</code></pre>
+<h2 id="making-a-corpus">Making a corpus</h2>
+<p>The above examples all work on a single file, but can be easily expanded to cover an entire corpus of documents. Here's an example that works for all files in a folder.</p>
+<pre><code class="language-python">import os
+files = os.listdir('example_folder')
+corpus = []
+for file in files:
+    with open(f'example_folder/{file}','r',encoding='utf-8') as f:
+        corpus.append(json.load(f))
+</code></pre>
+<h2 id="a-note-about-pre-processing">A note about pre-processing</h2>
+<p>One difference between the examples we're presenting here and many practical applications of natural language processing is the need for pre-processing of data. Our examples are carefully constructed to require minimal pre-processing to correct OCR or transcription mistake or remove unncessary content. Some example of basic examples are included on the next page, or you can read more detail via an <a href="https://www.geeksforgeeks.org/text-preprocessing-in-python-set-1/">online tutorial</a></p></div>
             </div>
         </div>
 
